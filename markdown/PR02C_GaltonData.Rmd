@@ -1,6 +1,6 @@
 ---
 title: "Project 2C: Galton Data"
-author: "PUT YOUR NAME HERE"
+author: "Preet Piyush Patel, Ali Lmalki, Jocelyn Pelcastre-Gonzalez"
 date: '`r format(Sys.time(), "%A, %B %d, %Y @ %I:%M %p")`'
 output: 
   html_document: 
@@ -23,7 +23,8 @@ knitr::opts_chunk$set(
 ### Packages Used
 
 ```{r loadpackages}
-
+library(tidyverse)
+library(skimr)
 ```
 
 ### Datasets Used
@@ -35,19 +36,19 @@ Francis Galton, a cousin of Charles Darwin, studied the relationship between par
 #### Galton Main Dataset
 
 ```{r loadmaindata}
-
+data_main <- read_csv("https://raw.githubusercontent.com/STAT-JET-ASU/Datasets/master/Instructor/galtonfamiliesmain.csv")
 ```
 
 #### Galton Subset Dataset
 
 ```{r loadsubdata}
-
+data_sub <- read_csv("https://raw.githubusercontent.com/STAT-JET-ASU/Datasets/master/Instructor/galtonfamiliessub.csv")
 ```
 
 #### Galton Notebook Dataset
 
 ```{r loadnotebook}
-
+data_notebook <- read_csv("https://raw.githubusercontent.com/STAT-JET-ASU/Datasets/master/Instructor/galtonfamiliesnotebook.csv")
 ```
 
 <hr>
@@ -77,6 +78,76 @@ Load the three Galton datasets and use `glimpse()` to explore their structures. 
 
 ```{r assembledata1}
 
+data_main <- data_main %>%
+  mutate(
+    family_id = as.numeric(ifelse(FamilyID == "136A", 205, FamilyID)),
+    mother_ht = Mother * 1.08,
+    midparent = (Father + mother_ht) / 2,
+    child_ht = ifelse(Child == "Daughter", Height * 1.08, Height)
+  ) %>%
+  select(
+    family_id,
+    num_children = Children,
+    father_ht = Father,
+    mother_ht,
+    midparent,
+    child_sex = Child,
+    child_ht
+  ) %>%
+  arrange(
+    family_id,
+    desc(child_sex),
+    desc(child_ht)
+  )
+
+glimpse(data_main)
+
+data_sub <- data_sub %>%
+  mutate(
+    father_ht = FatherR + 60,
+    mother = MotherR + 60,
+    mother_ht = mother * 1.08,
+    midparent = (father_ht + mother_ht) / 2,
+    height = HeightR + 60,
+    child_ht = ifelse(Child == "Daughter", height * 1.08, height)
+  ) %>%
+  select(
+    family_id = FamilyID,
+    num_children = Children,
+    father_ht,
+    mother_ht,
+    midparent,
+    child_sex = Child,
+    child_ht
+  ) %>%
+  arrange(
+    family_id,
+    desc(child_sex),
+    desc(child_ht)
+  )
+
+glimpse(data_sub)
+
+data_notebook <- data_notebook %>%
+   select(
+      family_id = FamilyID,
+      Page
+   )
+
+
+data_notebook$family_id <- as.double(data_notebook$family_id)
+
+glimpse(data_notebook)
+
+dataset1 <- bind_rows(data_main, data_sub) %>%
+inner_join(data_notebook, by = "family_id") %>%
+arrange(
+   family_id,
+   desc(child_ht)
+)
+
+glimpse(dataset1)
+head(dataset1)
 ```
 
 #### Dataset #2
@@ -84,7 +155,11 @@ Load the three Galton datasets and use `glimpse()` to explore their structures. 
 From Dataset #1, select the variables `familyid` and `num_children`, then reduce the dataset so it contains only one unique row per family. Use `glimpse()` to display the result. (Hint: The final dataset should have 205 rows/observations and two variables/columns.)
 
 ```{r assembledata2}
+dataset2 <- dataset1 %>%
+  select(family_id, num_children) %>%
+  distinct()
 
+glimpse(dataset2)
 ```
 
 ### Visualization 1: Updated Scatterplot
@@ -118,6 +193,16 @@ Include the following.
 * use `theme()` to move the legend to the bottom of the scatterplot
 
 ```{r updatedscatterplot}
+ggplot(dataset1, aes(x = child_ht, y = midparent, color = child_sex)) + 
+  geom_point(size = 2, alpha = 0.7) +
+  scale_color_manual(values = c("orange", "blue")) +
+  scale_x_continuous(breaks = seq(60, 80, by = 1)) +
+  scale_y_continuous(breaks = seq(60, 80, by = 1)) +
+  coord_fixed() +
+  labs(x = "Child Height in inches", y = "Mid-parent height in inches", title = "Plot of Child Height (Inches) vs. Mid-parent Height (Inches)", color = "Gender of child") +
+  theme_linedraw() +
+  theme(legend.position = "bottom")
+  
 
 ```
 
@@ -128,7 +213,18 @@ Include the following.
 Create a barplot to show the distribution of the number of children per family. Set the bars to something other than the default `width`. Scale the x-axis so that there is a tick mark for each bar. Choose appropriate colors, labels, themes, and/or and other types of formatting that you feel will enhance the meaning or visual appearance of the plot.  (Hint: Use `count()` to find out how many families have a given number of children, then use that information to create your plot.)
 
 ```{r childrenbarplot}
+childrendataset2 <- dataset2 %>% count(num_children)
 
+childrenbarplot <- 
+  ggplot(childrendataset2, aes(x = num_children, y = n)) +
+  geom_col(width = 0.8, fill = "dodgerblue3") +
+  scale_x_continuous(breaks = 1:15) +
+  theme_minimal() +
+  labs(title = "Number of Children in Each Family", 
+       x = "Number of Children", 
+       y = "Numer of Families")
+
+childrenbarplot
 ```
 
 <hr>
@@ -139,19 +235,20 @@ Create a barplot to show the distribution of the number of children per family. 
 
 **ANSWER**
 
-ERASE THIS TEXT AND ANSWER QUESTION HERE
+Yes, the new scatterplot seems to have a better correlation between the midparent height and the children height. The new scatterplot is also easier to read than Galton's original diagram. It does not contain as much information as the original one, which makes it easier to read and understand. The 3D quality of Galton's original diagram makes it harder to read, removing that quality therefore enhanced our scatterplot's legibility. 
+
 
 **Question 2:** Explain the rationale behind the choices you made when creating your scatterplot and barplot, such as size, color, transparency, or other features. What motivated your decisions? 
 
 **ANSWER**
 
-ERASE THIS TEXT AND ANSWER QUESTION HERE
+We made these choices to enhance the visual appearance of the plots, and to make the analysis phase of the experiment easier to conduct. Modifying the opacity and size of the dots in our scatterplot made it easier to be able to tell distinct points and determine where there was more density. The colors in the scatterplot are distinct enought to be able to be distinguished from each other. The sizes of the bars on the bargraph were changed to make it easier to read. We can still determine the distribution of chidren in each family while being able to see each bar separately. 
 
 **Question 3:** Considering best practices, how does using `coord_fixed()` enhance the authenticity of the information shown in the scatterplot, such as the relationship and spread of the data?
 
 **ANSWER**
 
-ERASE THIS TEXT AND ANSWER QUESTION HERE
+Fixing the ratio of length between the y and x axes is important to preserve the relationship between the data. Otherwise the difference of units would violate this relationship. Using `coord_fixed()` allows for us to keep both axes porportionate to each other, therefore we can be sure to accurately portray the relationship in the data. 
 
 ***
 ```{r}

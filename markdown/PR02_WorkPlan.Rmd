@@ -1,7 +1,7 @@
 ---
 title: "Group Work Plan"
 subtitle: "STT2860 S22 Project 02"
-author: "Authors: ALL GROUP MEMBER NAMES HERE"
+author: "Jocelyn Pelcastre-Gonzalez, Preet Piyush Patel, and Ali Lmalki"
 date: "`r format(Sys.time(), '%A, %B %d, %Y @ %I:%M %p')`"
 output: 
   html_document: 
@@ -12,14 +12,14 @@ output:
 
 **Work Plan/Assignments**
 
-ERASE THIS TEXT AND OUTLINE/EXPLAIN YOUR PLAN FOR COMPLETING THE PROJECT WORK
+Work on data manipulation during class time and have the visualizations set separately. Each of us will deal with visualizations and check over each others' work, even when not in class. Data manipulation will be done during class time to allow us to help each other. 
 
 **Completion Timeline**
 
-ERASE THIS TEXT AND OUTLINE/EXPLAIN YOUR PLANNED TIMELINE FOR TASK COMLETION
+We will attempt to complete the data manipulation in each project section by next class period Tuesday. The visualizations can be completed in between, as soon as we have the data manipulation for the corresponding data groups. The remaining time will be used to check over each others' work. 
 
 **Communication Plan**
 
-ERASE THIS TEXT AND OUTLINE/EXPLAIN YOUR PLAN FOR GROUP COMMUNICATION
+Snapchat group is the first preference for communication and will be checked first. The forum is a second option of communication. 
 
 ***

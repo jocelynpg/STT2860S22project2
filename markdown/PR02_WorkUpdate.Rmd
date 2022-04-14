@@ -14,18 +14,18 @@ output:
 
 Refer back to your original work plan. Has anything changed? Who has completed what portions of the project? Explain.
 
-ERASE THIS TEXT AND ANSWER THE QUESTION
+Most of Project 2b for the streaming data has been completed. We have the questions left and some visualizations. Preet worked on Dataset 1 and its visualizations. Jocelyn worked on dataset 2 and its visualizations. We have split up the work for data manipulations and visualizations so that everyone has an opportunity to work on each project part. Project 2c for Galton data has been started on. Ali was working on Dataset 1 and Preet on Dataset 2. We are splitting up the visualization. Everyone will answer the questions and put their input into each question.
 
 **Completion Timeline Update**
 
 Refer back to your original timeline. Has anything changed? What pieces of the project are done and what are still left to do? Explain.
 
-ERASE THIS TEXT AND ANSWER THE QUESTION
+We are mostly going along with the original timeline. We are almost finished with Project 2b and have begun project 2c. Project 2b should be completed by tomorrow. 
 
 **Communication Update**
 
 Refer back to your communication plan. Has anything changed? Has everyone communicated in an effective and timely manner? Explain.
 
-ERASE THIS TEXT AND ANSWER THE QUESTION
+The communication plan is still the same. Due to the in-class time we have had on the project we have been able to communicate mostly during class time while working together. 
 
 ***

@@ -1,7 +1,7 @@
 ---
 title: "Becoming a Data Scientist"
 subtitle: "STT2860 S22 Project 02"
-author: "Author: YOUR NAME HERE"
+author: "Jocelyn Pelcastre-Gonzalez"
 date: "`r format(Sys.time(), '%A, %B %d, %Y @ %I:%M %p')`"
 output: 
   html_document: 
@@ -12,38 +12,38 @@ output:
 
 **Q1: What is the name of the person interviewed?**
 
-ANSWER:
+ANSWER: Jasmine Dumas
 
 **Q2: Why did you choose the particular interview you did?**
 
-ANSWER:
+ANSWER: I chose this particular interview because I once considered going into the field of biology, specifically microbiology or a field similar to Dumas'. I am interested in seeing how they moved from being a biomedical engineer to becoming a data scientist.
 
 **Q3: Does the person consider themselves a data scientist?**
 
-ANSWER:
+ANSWER: They do consider themselves a data scientist.
 
 **Q4: What is their formal and self-taught education in data science?**
 
-ANSWER:
+ANSWER: They first got a degree in biomedical engineering which allowed them to get involved in computational programming during their senior year. Right after college they started a project to determine if they truly wanted to become a data scientist. They were able to connect with a mentor who helped them with resources to learn about coding in R. They went on to get a Masters program of predictive analytics at DuPaul and then took some courses in computer science at John Hopkins. They then decided to return to DuPaul but at currently focusing in working on their skills themselves. 
 
 **Q5: What has been their career path? Did they start off in data science?**
 
-ANSWER:
+ANSWER: They got a job after college and worked on their project at the same time. From their project, they were able to create a survival analysis program and were able to work with others and write a paper on the project. Their first data science job was an internship working in auto insurance which allowed them to work on predictive models. They were able to get an associate position where they held their internship. They then made their transition to their current job at Simple. Simple provides a banking account with tools to help people with their finances. 
 
 **Q6: What programs/technologies to they use when working in data science?**
 
-ANSWER:
+ANSWER: They mostly work with R and are very passionate about learning more about the program. 
 
 **Q7: What is one interesting (to you) data science problem they have worked on?**
 
-ANSWER:
+ANSWER: I find it interesting how they have worked on predictive models. I would like to be able to look at how to create predicitve models and be able to analyze data based on these models. 
 
 **Q8: Are there any specific pieces of advice they gave that inspire/resonate with you?**
 
-ANSWER:
+ANSWER: They recommended having your projects be accessible and public and documenting your process. I am inspired by that because I have an interest in data analytics, and working on a personal project is appealing to me.
 
 **Q9: Was there anything that surprised you or that you particularly identified with?**
 
-ANSWER:
+ANSWER: I am surprised at how they took the initiative to create their own project and learn how to code in R themselves. 
 
 ***
